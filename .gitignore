@@ -1,3 +1,6 @@
+.idea/*
+application/logs/*
+application/cache/*
 ./sessions
 error_log
 root.txt

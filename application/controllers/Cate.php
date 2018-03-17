@@ -49,7 +49,8 @@ class Cate extends MY_Controller
             $this->load->view('/admin/cate_add');
             $this->load->view('/public/footer_admin');
         } else {
-            $this->cate_model->insert_cate($this->input->post());
+            if(empty($this->input->post('cate_color'))) $this->input->post('cate_color', '000000');
+            $this->cate_model->insert($this->input->post());
             redirect('/cate/info');
         }
     }
@@ -69,7 +70,7 @@ class Cate extends MY_Controller
             $this->load->view('/admin/cate_edit',$data);
             $this->load->view('/public/footer_admin',$data);
         } else {
-            $this->cate_model->update_cate($this->input->post());
+            $this->cate_model->update($this->input->post());
             redirect('cate/info');
         }
 

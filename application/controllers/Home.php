@@ -17,6 +17,22 @@ class Home extends CI_Controller {
      */
 	public function index()
 	{
+        //增加来源访问记录
+        if(empty($this->session->refer['url']) || (time()-$this->session->refer['time']>=60)) {
+            $headerRefer = $this->input->get_request_header('Referer', TRUE);
+            $server = $this->input->server(['HTTP_REFERER','REMOTE_ADDR'], true);
+            $refer = $headerRefer ?:  $server['HTTP_REFERER'];
+            log_message('error', $refer);
+            if($refer){
+                $refer = parse_url($refer);
+                $this->session->refer = [
+                    'url'   =>  $refer['host'],
+                    'md5'   =>  md5($refer['host']),
+                    'time'  =>  time()
+                ];
+            }
+        }
+
         $data['sys_info'] = $this->sys_model->get_sys_info();
         $data['notice'] = $this->notice_model->get_notice();
         $data['cates'] = $this->cate_model->get_cates();
@@ -69,5 +85,17 @@ class Home extends CI_Controller {
             $this->apply_model->insert_apply($this->input->post());
             show_error('添加申请成功','','提示');
         }
+    }
+
+    public function refer()
+    {
+        $this->load->model('refer_model');
+        $data['sys_info'] = $this->sys_model->get_sys_info();
+        $data['notice'] = $this->notice_model->get_notice();
+        $data['links'] = $this->refer_model->get_top_links();
+        $this->load->view('public/header_front', $data);
+        $this->load->view('home/refer', $data);
+        $this->load->view('public/footer_front', $data);
+        $this->output->cache($data['sys_info']['cache_time']);
     }
 }

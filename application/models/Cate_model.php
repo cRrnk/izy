@@ -57,12 +57,12 @@ class Cate_model extends CI_Model
         return $query->result_array();
     }
 
-    public function insert_cate($data)
+    public function insert($data)
     {
         return $this->db->insert('cate_info', $data);
     }
 
-    public function update_cate($data)
+    public function update($data)
     {
         return $this->db->where(['cate_id'=>$data['cate_id']])->update('cate_info',$data);
     }

@@ -38,7 +38,7 @@ class Login extends CI_Controller {
             if($result['password'] != md5($password)){
                 show_error('密码错误','','提示');
             }
-            if ($result['status'] != 'online') {
+            if ($result['state'] != 1) {
                 show_error('账户异常','','提示');
             }
             $this->session->is_login = true;

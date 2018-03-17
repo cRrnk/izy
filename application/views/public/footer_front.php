@@ -31,7 +31,7 @@
 <script language="javascript" type="text/javascript" src="//js.users.51.la/19158886.js"></script>
 <noscript><a href="//www.51.la/?19158886" rel="nofollow" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="//img.users.51.la/19158886.asp" style="border:none" /></a></noscript>
 
-<?php if (!preg_match('/MicroMessenger/i', $_SERVER['HTTP_USER_AGENT'])) {
+<?php if (!preg_match('/MicroMessenger/i', ($_SERVER['HTTP_USER_AGENT'] ?: ''))) {
     $taobao_script = "<script type='text/javascript'>
     (function(win,doc){
         var s = doc.createElement('script'), h = doc.getElementsByTagName('head')[0];

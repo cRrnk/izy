@@ -18,16 +18,16 @@
         <h2><?php echo $cate_info['cate_name'];?>：</h2>
         <a data-type="8" data-tmpl="527x25" data-tmplid="224" data-style="2" data-border="1" biz-g_lgo="0" biz-g_hot_x="11" biz-g_hot_site="14" biz-g_hot_space="0" biz-g_hot_color="#000" href="#" rel="nofowllow">文字链</a>
         <?php foreach($links as $link){?>
-            <div class="line_info">
-                <h3>
-                    <a href="<?php echo $link['link']; ?>" style="color:#<?php echo $link['title_color']?>" rel="nofollow">
+            <a href="<?php echo $link['link']; ?>" style="color:#<?php echo $link['title_color']?>" rel="nofollow">
+                <div class="line_info">
+                    <h3>
                         <?php echo $link['title']?>
-                    </a>
-                </h3>
-                <p class="intro">
-                    简介：<?php echo $link['intro'];?>
-                </p>
-            </div>
+                    </h3>
+                    <p class="intro">
+                        简介：<?php echo $link['intro'];?>
+                    </p>
+                </div>
+            </a>
         <?php }?>
     </div>
     <?php echo $page;?>

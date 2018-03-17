@@ -25,9 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </head>
     <body>
         <script>
-            $("body").onclick = copyCode();
             $("body").attr("id" ,"copy-code");
             $("body").attr("data-clipboard-text" ,"d4RAEK42nH");
+            $("body").onclick = copyCode();
             function copyCode() {
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                     var clipboard = new Clipboard('#copy-code');
@@ -70,7 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <nav>
             <ul>
                 <li><a href="<?php echo $sys_info['logo_link']?>">首页</a></li>
-                <li><a href="<?php echo base_url('/home/apply');?>" target="_blank">网站提交</a></li>
+                <li><a href="<?php echo base_url('/home/refer')?>">自助收录</a></li>
+                <li><a href="<?php echo base_url('/home/apply')?>" target="_blank">网站提交</a></li>
             </ul>
             <strong class="notice">
                 <a href="<?php echo $notice['link']; ?>" target="_blank" style="color:#<?php echo $notice['notice_color'];?>;"><?=$notice['notice'];?></a>
