@@ -12,12 +12,17 @@
             </p>
             <p style="text-indent: 2em">
                 来访<span style="color: #000000;">少于10次黑色</span>、
-                <span style="color:#ff00ff; font-weight:bold;">少于100次粉色</span>、
+                <span style="color:#00DA89; font-weight:bold;">少于50次绿色</span>、
+                <span style="color:#836FFF; font-weight:bold;">少于100次紫色</span>、
                 <span style="color:#FF0000; font-weight:bold;">100次以上红色</span>
             </p>
             <h3>如何加入？</h3>
             <p style="text-indent: 2em">
                 只需要将本站首页链接加入贵站，访客通过链接访问即可自动展示到下方
+                <textarea name="self_link" id="" cols="100" rows="3">
+                <!--复制添加到您的网站吧-->
+                <a href=http://www.izy123.com target=_blank>爱资源导航站</a>
+            </textarea>
             </p>
         </div>
         <div id="cate">
@@ -29,8 +34,11 @@
                                 case $link['visit_today_num']<10:
                                     echo '#000000;font-weight:bold;';
                                     break;
+                                case $link['visit_today_num']<50:
+                                    echo '#00DA89;font-weight:bold;';
+                                    break;
                                 case $link['visit_today_num']<100:
-                                    echo '#ff00ff;font-weight:bold;';
+                                    echo '#836FFF;font-weight:bold;';
                                     break;
                                 default:
                                     echo '#FF0000';

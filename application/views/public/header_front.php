@@ -64,14 +64,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="tools">
                 <a onclick="addFavor()">收藏本站</a>&nbsp;
-                |&nbsp;<a href="<?php echo base_url('/home/apply');?>" target="_blank">网站提交</a>
+                |&nbsp;<a href="<?php echo base_url('/home/refer');?>" target="_blank">网站提交</a>
             </div>
         </header>
         <nav>
             <ul>
                 <li><a href="<?php echo $sys_info['logo_link']?>">首页</a></li>
                 <li><a href="<?php echo base_url('/home/refer')?>">自助收录</a></li>
-                <li><a href="<?php echo base_url('/home/apply')?>" target="_blank">网站提交</a></li>
             </ul>
             <strong class="notice">
                 <a href="<?php echo $notice['link']; ?>" target="_blank" style="color:#<?php echo $notice['notice_color'];?>;"><?=$notice['notice'];?></a>

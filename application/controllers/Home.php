@@ -39,7 +39,7 @@ class Home extends CI_Controller {
         $this->load->view('public/header_front', $data);
         $this->load->view('home/index', $data);
         $this->load->view('public/footer_front', $data);
-//        $this->output->cache($data['sys_info']['cache_time']);
+        $this->output->cache($data['sys_info']['cache_time']);
 	}
 
     /**
@@ -65,25 +65,7 @@ class Home extends CI_Controller {
         $this->load->view('/public/header_front',$data);
         $this->load->view('/home/cate', $data);
         $this->load->view('/public/footer_front',$data);
-        $this->output->cache($data['sys_info']['cache_time']);
-    }
-
-    public function apply()
-    {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('title', '网站名', 'required');
-        $this->form_validation->set_rules('link', '网站地址', 'required');
-        $this->form_validation->set_rules('intro', '网站简介', 'required');
-        $this->form_validation->set_rules('contact', '联系方式', 'required');
-        $this->form_validation->set_rules('friend_link', '友链地址页', 'required');
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('/home/apply');
-        } else {
-            $this->load->model('apply_model');
-            $this->apply_model->insert_apply($this->input->post());
-            show_error('添加申请成功','','提示');
-        }
+//        $this->output->cache($data['sys_info']['cache_time']);
     }
 
     public function refer()

@@ -3,11 +3,11 @@ img, input, label, select {  vertical-align:middle;  }
 ol, ul, li {  list-style:none;  }
 img, iframe {  border:none;  }
 a:link, a:visited {  text-decoration:none;  }
-a:hover {  color:#f00;  }
+a:hover {  color: #FC6;  }
 .center {  margin:0 auto;  }
 .left {  float:left;  }
 .right {  float:right;  }
-.red {  color:#f00;  }
+.red {  color:#ff0000;  }
 .max_width {  width:960px;  }
 
 body {
@@ -83,7 +83,7 @@ nav ul li a {
 
 nav ul li a:hover{
 	color: #000000;
-	background: #ff0;
+	background: #FC6;
 }
 
 nav .notice{

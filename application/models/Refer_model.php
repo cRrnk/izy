@@ -36,10 +36,10 @@ class Refer_model extends CI_Model
 
     public function get_top_links()
     {
-        $this->db->where(['last_visit_time >=' => date('Y-m-d 00:00:00')]);
+//        $this->db->where(['last_visit_time >=' => date('Y-m-d 00:00:00')]);
         $this->db->order_by('last_visit_time', 'DESC');
         $this->db->order_by('visit_today_num', 'DESC');
-        $this->db->limit(50);
+        $this->db->limit(60);
         $query = $this->db->get('refer_info');
         return $query->result_array();
     }
