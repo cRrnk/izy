@@ -10,6 +10,10 @@
 <div id="content">
     <h1> 链接信息</h1>
     <button><a href="<?php echo base_url('/link/add');?>">添加</a></button>
+    <form action="<?php echo base_url('/link/search');?>" method="post">
+        <input type="txet" name="search_title" value="<?php echo $search_title  ?: '';?>" placeholder="搜索标题..."/>
+        <input type="submit" value="提交" />
+    </form>
     <hr>
     <div>
         <table class="table_info">

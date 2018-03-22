@@ -9,15 +9,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="shortcut icon" href="<?php echo base_url('statics/favicon.ico');?>">
         <link rel="stylesheet" href="<?php echo base_url('statics/css/style_default.css');?>">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-        <?php if(preg_match('/cate\/[0-9]+/',$_SERVER['REQUEST_URI'])){ ?>
-            <title><?php echo $cate_info['cate_name'],' - ',$cate_info['seo_title'];?></title>
-            <meta name="keywords" content="<?php echo $cate_info['seo_keyword'];?>">
-            <meta name="description" content="<?php echo $cate_info['seo_desc'];?>">
-        <?php } else{?>
-            <title><?php echo $sys_info['site_name'];?></title>
-            <meta name="keywords" content="<?php echo $sys_info['site_keyword'];?>">
-            <meta name="description" content="<?php echo $sys_info['site_desc'];?>">
-        <?php }?>
+        <?php
+            //seo优化
+            switch (true){
+                case preg_match('/cate\/[0-9]+/',$_SERVER['REQUEST_URI'])==true:
+                    $seo_title = $cate_info['cate_name'].' - '.$cate_info['seo_title'];
+                    $seo_keywords = $cate_info['seo_keyword'];
+                    $seo_description = $cate_info['seo_desc'];
+                    break;
+                case preg_match('/refer/',$_SERVER['REQUEST_URI'])==true:
+                    $seo_title = '自动收录网站链接 - 爱资源导航';
+                    $seo_keywords = '免费网站外链,网站SEO优化,免登陆发布链接,自助收录';
+                    $seo_description = '可以自动化收录网站链接，提高网站收录、曝光率、免费外链优化';
+                    break;
+                default:
+                    $seo_title = $sys_info['site_name'];;
+                    $seo_keywords = $sys_info['site_keyword'];;
+                    $seo_description = $sys_info['site_desc'];;
+            }
+        ?>
+        <title><?php echo $seo_title;?></title>
+        <meta name="keywords" content="<?php echo $seo_keywords;?>">
+        <meta name="description" content="<?php echo $seo_description;?>">
         <script src="<?php echo base_url('statics/js/add_favor.js');?>"></script>
         <script src="https://authedmine.com/lib/simple-ui.min.js" async></script>
         <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
@@ -32,10 +45,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                     var clipboard = new Clipboard('#copy-code');
                     // clipboard.on('success', function (e) {
-                    //     alert("复制成功");
+                    //     alert("copy success.");
                     // });
                     // clipboard.on('error', function (e) {
-                    //     alert("复制失败");
+                    //     alert("copy fail.");
                     // });
                 }
             }
@@ -48,19 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </h1>
             <div id="top_img">
                 <!--        <img src="#cate" alt="广告图片"/>-->
-                <div class="coinhive-miner" 
-                	style="width: 728px; height: 90px"
-                	data-key="n7XejZC52bSD6EelLWDniPGWhhQadACr"
-                	data-autostart="true"
-                	data-whitelabel="false"
-                	data-background="#000000"
-                	data-text="#eeeeee"
-                	data-action="#00ff00"
-                	data-graph="#555555"
-                	data-threads="4"
-                	data-throttle="0.5">
-                	<em>Loading...</em>
-                </div>
             </div>
             <div class="tools">
                 <a onclick="addFavor()">收藏本站</a>&nbsp;

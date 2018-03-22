@@ -1,6 +1,6 @@
 <style>
     #content .line_info{
-        border: 1px solid;
+        border: 1px solid #ABABAB;
         margin: 10px auto;
     }
     #content .line_info h3{
@@ -8,7 +8,7 @@
     }
     #content .line_info p{
         text-indent: 2em;
-        border-top: 1px solid green;
+        border-top: 1px solid #ABABAB;
         margin: 5px;
         padding: 5px;
     }
@@ -18,7 +18,7 @@
         <h2><?php echo $cate_info['cate_name'];?>：</h2>
         <a data-type="8" data-tmpl="527x25" data-tmplid="224" data-style="2" data-border="1" biz-g_lgo="0" biz-g_hot_x="11" biz-g_hot_site="14" biz-g_hot_space="0" biz-g_hot_color="#000" href="#" rel="nofowllow">文字链</a>
         <?php foreach($links as $link){?>
-            <a href="<?php echo $link['link']; ?>" style="color:#<?php echo $link['title_color']?>" rel="nofollow">
+            <a href="<?php echo $link['link']; ?>" rel="nofollow" target="_blank" title="<?php echo $link['title']?>">
                 <div class="line_info">
                     <h3>
                         <?php echo $link['title']?>

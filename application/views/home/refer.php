@@ -8,7 +8,7 @@
         <div class="readme">
             <h3>自助收录说明：</h3>
             <p style="text-indent: 2em">
-                每来访一次,次数+1排名越前面 (每日凌晨自动清零)
+                每来访一次，次数+1，排名越前面 (每日凌晨自动清零)
             </p>
             <p style="text-indent: 2em">
                 来访<span style="color: #000000;">少于10次黑色</span>、

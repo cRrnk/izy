@@ -27,7 +27,6 @@ class Refer extends CI_Controller {
         set_time_limit(0);
         //Array ( [url] => dev.izy123.com [md5] => fa4c423bc1e6166a45d9b5fbc0e8db8a )
         if(!$this->session->refer['url']) {
-            log_message('error', 'Refer/success--' . $this->session->refer['url']);
             return false;
         }
         if(in_array($this->session->refer['url'], [
@@ -50,7 +49,7 @@ class Refer extends CI_Controller {
             return $this->refer_model->update($data);
         }else{
             $websiteInfo = $this->fetchInfo($this->session->refer['url']);
-            $websiteInfo['title'] = preg_split('/[-,.;:?]+/is', $websiteInfo['title'])[0];
+//            $websiteInfo['title'] = preg_split('/[-,.;:?]+/is', $websiteInfo['title'])[0];
 //            log_message('error', $websiteInfo['title']);
             $data = [
                 'url'               =>  $this->session->refer['url'],
@@ -92,7 +91,7 @@ class Refer extends CI_Controller {
         }
 
         return [
-            'title'         =>  mb_substr($title, 0, 10),
+            'title'         =>  mb_substr($title, 0, 20),
             'keywords'      =>  mb_substr($keywords, 0, 100),
             'description'   =>  mb_substr($description, 0, 200)
         ];

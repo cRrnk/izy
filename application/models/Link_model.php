@@ -114,5 +114,35 @@ class Link_model extends CI_Model
         $data['last_time'] = date('Y-m-d H:i:s');
         return $this->db->where(['link_id'=>$data['link_id']])->update('link_info',$data);
     }
+    
+    public function get_search_count($title)
+    {
+        $condition = array(
+            'status<>'=>'delete'
+        );
+        $title && $this->db->like('title', $title);
+        return $this->db->where($condition)->count_all_results('link_info');
+    }
+    
+    public function get_search_links($title='', $start=0, $limit, $cate_id=false, $is_admin=false)
+    {
+        $condition = array(
+            'status'=>'online'
+        );
+        if($cate_id){
+            $condition['cate_id'] = $cate_id;
+        }
+        if($is_admin) {
+            unset($condition['status']);
+            $condition['status<>'] = 'delete';
+        }
+        $title && $this->db->like('title', $title);
+        $this->db->where($condition);
+        $this->db->order_by('sort_order','DESC');
+        $this->db->order_by('link_id','DESC');
+        $this->db->limit($limit,$start);
+        $query = $this->db->get('link_info');
+        return $query->result_array();
+    }
 
 }

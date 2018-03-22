@@ -20,9 +20,8 @@ class Home extends CI_Controller {
         //增加来源访问记录
         if(empty($this->session->refer['url']) || (time()-$this->session->refer['time']>=60)) {
             $headerRefer = $this->input->get_request_header('Referer', TRUE);
-            $server = $this->input->server(['HTTP_REFERER','REMOTE_ADDR'], true);
-            $refer = $headerRefer ?:  $server['HTTP_REFERER'];
-            log_message('error', $refer);
+            $serverRefer = $this->input->server('HTTP_REFERER', true);
+            $refer = $headerRefer ?:  $serverRefer;
             if($refer){
                 $refer = parse_url($refer);
                 $this->session->refer = [
@@ -40,7 +39,7 @@ class Home extends CI_Controller {
         $this->load->view('public/header_front', $data);
         $this->load->view('home/index', $data);
         $this->load->view('public/footer_front', $data);
-        $this->output->cache($data['sys_info']['cache_time']);
+//        $this->output->cache($data['sys_info']['cache_time']);
 	}
 
     /**
@@ -96,6 +95,6 @@ class Home extends CI_Controller {
         $this->load->view('public/header_front', $data);
         $this->load->view('home/refer', $data);
         $this->load->view('public/footer_front', $data);
-        $this->output->cache($data['sys_info']['cache_time']);
+        // $this->output->cache($data['sys_info']['cache_time']);
     }
 }

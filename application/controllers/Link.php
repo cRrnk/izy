@@ -32,6 +32,7 @@ class Link extends MY_Controller
         $start = $start < 0 ? 0 : $start;
         $data['links'] = $this->link_model->get_page_links($start,$config['per_page'],false,true);
         $data['cates']  = $this->cate_model->get_cates();
+        $data['search_title'] = $this->session->search_title ?: '';
         $this->load->view('/public/header_admin',$data);
         $this->load->view('/admin/link_info', $data);
         $this->load->view('/public/footer_admin',$data);
@@ -73,6 +74,30 @@ class Link extends MY_Controller
             $this->link_model->update_link($this->input->post());
             redirect('link/info');
         }
+    }
+    
+    public function search()
+    {
+        $search_title = $this->input->post('search_title', true);
+        if(empty($search_title)) show_error('搜索标题不能为空');
+        $this->session->search_title = $search_title;
+        $this->load->model('sys_model');
+        $this->load->library('pagination');
 
+        $config['base_url'] = base_url('/link/info/page');// 'http://example.com/index.php/test/page/';
+        $config['first_link'] = '首页';
+        $config['last_link'] = '尾页';
+        $config['total_rows'] = $this->link_model->get_search_count($search_title);
+        $config['per_page'] = $this->sys_model->get_sys_info()['per_page'];
+        $this->pagination->initialize($config);
+        $data['page'] = $this->pagination->create_links();
+        $start = ($this->pagination->cur_page-1) * $config['per_page'];
+        $start = $start < 0 ? 0 : $start;
+        $data['links'] = $this->link_model->get_search_links($search_title, $start, $config['per_page'], false, true);
+        $data['cates']  = $this->cate_model->get_cates();
+        $data['search_title'] = $search_title;
+        $this->load->view('/public/header_admin',$data);
+        $this->load->view('/admin/link_info', $data);
+        $this->load->view('/public/footer_admin',$data);
     }
 }
