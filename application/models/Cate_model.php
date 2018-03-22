@@ -15,15 +15,19 @@ class Cate_model extends CI_Model
 
     /**
      * 获取分类目录
-     * @param $cate_id
+     * @param bool $cate_id
+     * @param bool $is_admin
      * @return mixed
      */
-    public function get_cates($cate_id=false)
+    public function get_cates($cate_id=false, $is_admin=false)
     {
         $condition = array(
-            'status<>'=>'delete',
+            'status'=>'online',
             'pid'=>0
         );
+        if($is_admin) {
+            $condition['status<>'] = 'delete';
+        }
         if(false===$cate_id){
             $query = $this->db->where($condition)->order_by('sort_order')->get('cate_info');
             return $query->result_array();
@@ -47,7 +51,6 @@ class Cate_model extends CI_Model
             'status'=>'online'
         );
         if($is_admin) {
-            unset($condition['status']);
             $condition['status<>'] = 'delete';
         }
         $this->db->where($condition);

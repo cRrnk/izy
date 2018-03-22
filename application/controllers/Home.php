@@ -39,7 +39,7 @@ class Home extends CI_Controller {
         $this->load->view('public/header_front', $data);
         $this->load->view('home/index', $data);
         $this->load->view('public/footer_front', $data);
-        $this->output->cache($data['sys_info']['cache_time']);
+//        $this->output->cache($data['sys_info']['cache_time']);
 	}
 
     /**
