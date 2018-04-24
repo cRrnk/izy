@@ -1,8 +1,10 @@
 <main>
     <!-- 横幅广告 start -->
     <div id="banner">
-        <a data-type="5" data-tmpl="950x30" data-tmplid="138" data-style="2" data-border="1" href="#">淘宝充值</a>
 
+        <?php if(!isWeChat()){
+            echo '<a data-type="5" data-tmpl="950x30" data-tmplid="138" data-style="2" data-border="1" href="#">淘宝充值</a>';
+        } ?>
         <!--only index-->
         <script>
             var img_refer = document.createElement('img');

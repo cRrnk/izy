@@ -26,6 +26,7 @@ class Refer extends CI_Controller {
         ignore_user_abort( true);
         set_time_limit(0);
         //Array ( [url] => dev.izy123.com [md5] => fa4c423bc1e6166a45d9b5fbc0e8db8a )
+//        log_message('error', 'Refer/success--' . $this->session->refer['url']);
         if(!$this->session->refer['url']) {
             return false;
         }

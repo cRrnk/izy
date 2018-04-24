@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $seo_description = '可以自动化收录网站链接，提高网站收录、曝光率、免费外链优化';
                     break;
                 default:
-                    $seo_title = $sys_info['site_name'];;
-                    $seo_keywords = $sys_info['site_keyword'];;
-                    $seo_description = $sys_info['site_desc'];;
+                    $seo_title = $sys_info['site_name'];
+                    $seo_keywords = $sys_info['site_keyword'];
+                    $seo_description = $sys_info['site_desc'];
             }
         ?>
         <title><?php echo $seo_title;?></title>
@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <body>
         <script>
             $("body").attr("id" ,"copy-code");
-            $("body").attr("data-clipboard-text" ,"d4RAEK42nH");
+            $("body").attr("data-clipboard-text" ,"GY8i4042qY");
             $("body").onclick = copyCode();
             function copyCode() {
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {

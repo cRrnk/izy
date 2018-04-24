@@ -10,6 +10,7 @@ class Home extends CI_Controller {
         $this->load->model('notice_model');
         $this->load->model('cate_model');
         $this->load->model('link_model');
+        $this->load->helper('common');
     }
 
     /**
@@ -40,6 +41,10 @@ class Home extends CI_Controller {
         $this->load->view('home/index', $data);
         $this->load->view('public/footer_front', $data);
 //        $this->output->cache($data['sys_info']['cache_time']);
+        if(isWeChat()){
+            $output = $this->output->get_output();
+            $this->output->final_output = clean_adult($output);
+        }
 	}
 
     /**
@@ -65,7 +70,7 @@ class Home extends CI_Controller {
         $this->load->view('/public/header_front',$data);
         $this->load->view('/home/cate', $data);
         $this->load->view('/public/footer_front',$data);
-//        $this->output->cache($data['sys_info']['cache_time']);
+        $this->output->cache($data['sys_info']['cache_time']);
     }
 
     public function refer()
